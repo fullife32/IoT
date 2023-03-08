@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+	config.vm.box = "debian/bullseye64"
+
+	config.vm.define "eassouliS" do |control|
+		control.vm.network "private_network", ip: "192.168.56.110"
+		control.vm.hostname = "eassouliS"
+		config.vm.provision "file", source: "./confs", destination: "$HOME/"
+		control.vm.provision "shell", inline: <<-SHELL
+			apt-get update
+			apt-get install curl -y
+			curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--node-ip=192.168.56.110 --flannel-iface=eth1 --token 12345" sh -s -
+			# sudo k3s kubectl create namespace apps
+			sudo k3s kubectl apply -f confs/app1.yaml -f confs/app2.yaml -f confs/app3.yaml
+			sudo k3s kubectl apply -f confs/ingress.yaml
+		SHELL
+		control.vm.provider "virtualbox" do |vb|
+			vb.name = "eassouliS"
+			vb.memory = "1024"
+			vb.cpus = 1
+		end
+	end
+end
