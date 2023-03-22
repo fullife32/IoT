@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app3-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app3
+  template:
+    metadata:
+      labels:
+        app: app3
+    spec:
+      volumes:
+        - name: app1-www
+          hostPath:
+            path: "/Users/tony/Projects/school/IoT/p2/confs/www/app3"
+      containers:
+      - name: app3
+        image: "nginx:stable-alpine"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: app1-www
