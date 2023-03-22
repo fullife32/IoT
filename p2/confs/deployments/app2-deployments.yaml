@@ -11,6 +11,10 @@ spec:
       labels:
         app: app2
     spec:
+      volumes:
+        - name: app2-www
+          hostPath:
+            path: "/home/vagrant/confs/www/app2"
       containers:
       - name: app2
         image: "nginx:stable-alpine"
@@ -20,3 +24,6 @@ spec:
             cpu: "100m"
         ports:
         - containerPort: 80
+        volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: app2-www
