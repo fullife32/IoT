@@ -12,9 +12,9 @@ Vagrant.configure("2") do |config|
 			apt-get update
 			apt-get install curl -y
 			curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--node-ip=192.168.56.110 --flannel-iface=eth1 --token 12345" sh -s -
-			# sudo k3s kubectl create namespace apps
-			sudo k3s kubectl apply -f confs/app1.yaml -f confs/app2.yaml -f confs/app3.yaml
-			sudo k3s kubectl apply -f confs/ingress.yaml
+			sudo k3s kubectl apply -f confs/services/app1-service.yaml -f confs/services/app2-service.yaml -f confs/services/app3-service.yaml
+			sudo k3s kubectl apply -f confs/deployments/app1-deployment.yaml -f confs/deployments/app2-deployment.yaml -f confs/deployments/app3-deployment.yaml
+			sudo k3s kubectl apply -f confs/ingress/ingress.yaml
 		SHELL
 		control.vm.provider "virtualbox" do |vb|
 			vb.name = "eassouliS"
