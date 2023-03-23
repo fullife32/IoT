@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-application
+  name: wil-application
 spec:
   destination:
     namespace: dev
     server: 'https://kubernetes.default.svc'
   source:
     path: manifests
-    repoURL: 'https://github.com/fullife32/eassouli-argocd.git'
+    repoURL: 'https://github.com/fullife32/eassouli-iot.git'
     targetRevision: HEAD
     directory:
       recurse: true
