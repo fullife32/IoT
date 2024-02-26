@@ -3,16 +3,17 @@ kind: Application
 metadata:
   name: wil-application
 spec:
-  destination:
-    namespace: dev
-    server: 'https://kubernetes.default.svc'
+  project: default
   source:
-    path: manifests
     repoURL: 'https://github.com/fullife32/eassouli-iot.git'
+    path: manifests
     targetRevision: HEAD
     directory:
       recurse: true
-  project: default
+      jsonnet: {}
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: dev
   syncPolicy:
     automated:
       prune: true
@@ -20,3 +21,9 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 20
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 10s
