@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/fullife32/eassouli-iot.git'
+    repoURL: 'http://gitlab.iot.local/root/wil-app.git'
     path: manifests
     targetRevision: HEAD
     directory:

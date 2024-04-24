@@ -9,7 +9,7 @@
 global:
   ingress:
     configureCertmanager: false
-    class: "nginx"
+    class: "traefik"
   hosts:
     domain: 192.168.99.100.nip.io
     externalIP: 192.168.99.100
@@ -21,6 +21,8 @@ global:
     # Configure the clone link in the UI to include the high-numbered NodePort
     # value from below (`gitlab.gitlab-shell.service.nodePort`)
     port: 32022
+  minio:
+    enabled: false
 # Don't use certmanager, we'll self-sign
 certmanager:
   install: false

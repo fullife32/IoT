@@ -7,6 +7,6 @@ kubectl -n argocd port-forward service/argocd-server 4443:443
 # To access wil-playground app on localhost:8888
 kubectl -n dev port-forward service/wil-service 8888:8888
 
-# To access gitlab app on localhost:80
+<!-- # To access gitlab app on localhost:80
 kubectl -n gitlab port-forward service/gitlab-nginx-ingress-controller 8080:80
-kubectl -n gitlab port-forward svc/gitlab-webservice-default --address 10.11.1.253 8082:8080
+kubectl -n gitlab port-forward svc/gitlab-webservice-default --address 10.11.1.253 8082:8080 -->
