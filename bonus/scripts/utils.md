@@ -1,5 +1,6 @@
 # To get argocd UI password, login: admin
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+kubectl -n gitlab get secret gitlab-gitlab-initial-root-password -o jsonpath="{.data.password}" | base64 -d
 
 # To access argocd UI on localhost:4443
 kubectl -n argocd port-forward service/argocd-server 4443:443

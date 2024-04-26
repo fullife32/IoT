@@ -9,17 +9,9 @@ helm repo update
 helm upgrade --install gitlab gitlab/gitlab -n gitlab --create-namespace \
   --timeout 600s \
   --set global.edition=ce \
-  --set global.hosts.domain=example.com \
-  --set global.hosts.externalIP=10.10.10.10 \
+  --set global.hosts.domain=iot.local \
   --set certmanager-issuer.email=me@example.com \
-  --set postgresql.image.tag=13.6.0
-  # --set certmanager.install=false \
-  # --set global.ingress.configureCertmanager=false \
-  # --set gitlab-runner.install=false
-  # --set global.hosts.domain=wil.local \
-  # --set certmanager-issuer.email=me@example.com \
-  # --set gitlab-runner.runners.privileged=true \
-  # --set global.hosts.https=false
+  --set gitlab-runner.install=false
 
 # kubectl apply -f ingress/gitlab-ingress.yml
 

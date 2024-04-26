@@ -9,11 +9,9 @@
 global:
   ingress:
     configureCertmanager: false
-    class: "nginx"
+    class: "traefik"
   hosts:
-    domain: 192.168.99.100.nip.io
-    externalIP: 192.168.99.100
-  # Disable Rails bootsnap cache (temporary)
+    domain: iot.local
   rails:
     bootsnap:
       enabled: false
@@ -48,7 +46,12 @@ gitlab:
     service:
       type: NodePort
       nodePort: 32022
+  kas:
+    enabled: false
+#  minio:
+#    enabled: false
 registry:
   hpa:
     minReplicas: 1
     maxReplicas: 1
+  ## https://docs.gitlab.com/charts/charts/gitlab/kas/
