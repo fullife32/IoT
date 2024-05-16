@@ -12,7 +12,7 @@ global:
     class: "traefik"
   hosts:
     domain: 192.168.99.100.nip.io
-    externalIP: 192.168.99.100
+    # externalIP: 192.168.99.100
   # Disable Rails bootsnap cache (temporary)
   rails:
     bootsnap:
@@ -21,7 +21,9 @@ global:
     # Configure the clone link in the UI to include the high-numbered NodePort
     # value from below (`gitlab.gitlab-shell.service.nodePort`)
     port: 32022
-  minio:
+  # minio:
+  #   enabled: false
+  kas:
     enabled: false
 # Don't use certmanager, we'll self-sign
 certmanager:
@@ -51,6 +53,4 @@ gitlab:
       type: NodePort
       nodePort: 32022
 registry:
-  hpa:
-    minReplicas: 1
-    maxReplicas: 1
+  enabled: false
