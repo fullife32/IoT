@@ -1,6 +1,6 @@
 #!/bin/bash
 
-k3d cluster create argocd -p "80:80@loadbalancer"
+k3d cluster create iot -p "80:80@loadbalancer"
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
