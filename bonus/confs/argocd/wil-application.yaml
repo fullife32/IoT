@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'http://gitlab.iot.local/root/wil-app.git'
+    repoURL: 'http://gitlab.10.18.194.53.nip.io/root/wil-app.git'
     path: manifests
     targetRevision: HEAD
     directory:

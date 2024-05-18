@@ -13,3 +13,6 @@ kubectl -n gitlab get secret gitlab-gitlab-initial-root-password -o jsonpath="{.
 <!-- # To access gitlab app on localhost:80
 kubectl -n gitlab port-forward service/gitlab-nginx-ingress-controller 8080:80
 kubectl -n gitlab port-forward svc/gitlab-webservice-default --address 10.11.1.253 8082:8080 -->
+
+127.0.0.1	gitlab.iot.local
+https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/
