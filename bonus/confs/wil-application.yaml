@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wil-application
+spec:
+  project: default
+  source:
+    repoURL: 'http://gitlab.192.168.43.48.nip.io/root/wil-application.git'
+    path: manifests
+    targetRevision: HEAD
+    directory:
+      recurse: true
+      jsonnet: {}
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 20
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 10s
