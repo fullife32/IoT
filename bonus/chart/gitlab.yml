@@ -11,8 +11,8 @@ global:
     configureCertmanager: false
     class: "traefik"
   hosts:
-    domain: 10.18.194.53.nip.io
-    externalIP: 10.18.194.53
+    domain: "192.168.99.100.nip.io"
+    externalIP: "192.168.99.100"
   # Disable Rails bootsnap cache (temporary)
   rails:
     bootsnap:

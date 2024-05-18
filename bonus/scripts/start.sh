@@ -10,7 +10,8 @@ helm repo update
 
 helm upgrade --install gitlab gitlab/gitlab -n gitlab --create-namespace \
   -f ../chart/gitlab.yml \
-  --set global.hosts.domain=10.18.194.53.nip.io \
+  --set global.hosts.domain="192.168.43.48.nip.io" \
+  --set global.hosts.externalIP="192.168.43.48" \
   --set global.edition=ce \
   --set global.hosts.https=false \
   --timeout 600s

@@ -7,8 +7,8 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl wait --for=condition=available deployments --all -n argocd --timeout 300s
 
 kubectl apply -n argocd -f ../confs/argocd/wil-application.yaml
-kubectl apply -n argocd -f ../ingress/argocd-ingress.yml
+# kubectl apply -n argocd -f ../ingress/argocd-ingress.yml
 
 echo "argocd login: admin, password:"
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-echo "To access ArgoCD UI: kubectl -n argocd port-forward service/argocd-server 4443:443"
+echo "\nTo access ArgoCD UI: kubectl -n argocd port-forward service/argocd-server 4443:443"
