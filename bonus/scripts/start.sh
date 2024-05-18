@@ -1,10 +1,3 @@
-# k3d cluster create iot --api-port 6443 -p "8080:80@loadbalancer"
-
-# kubectl create namespace argocd
-# kubectl create namespace dev
-
-# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
 helm repo add gitlab https://charts.gitlab.io/
 helm repo update
 
@@ -15,11 +8,12 @@ helm upgrade --install gitlab gitlab/gitlab -n gitlab --create-namespace \
   --set global.edition=ce \
   --set global.hosts.https=false \
   --timeout 600s
-  # --set postgresql.image.tag=13.6.0 \
-
-# Reuse p3 environment and only apply gitlab, then change github to iot for app manifest
-# Install kubectl, k3d, docker and helm automatic for 42
-# Change wil app to run on 80
-# Automatic change /etc/host or use nip.io
 
 kubectl wait --for=condition=available deployments --all -n gitlab --timeout 900s
+
+echo "gitlab URL: gitlab.192.168.43.48.nip.io"
+echo "login: root, password:"
+kubectl -n gitlab get secret gitlab-gitlab-initial-root-password -o jsonpath="{.data.password}" | base64 -d
+
+# Install kubectl, k3d, docker and helm automatic for 42
+# Change wil app to run on 80
