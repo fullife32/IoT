@@ -1,10 +1,10 @@
-GITLAB_ADDR="192.168.43.48"
+GITLAB_ADDR="192.168.56.1"
 
 helm repo add gitlab https://charts.gitlab.io/
 helm repo update
 
 helm upgrade --install gitlab gitlab/gitlab -n gitlab --create-namespace \
-  -f ../chart/gitlab.yml \
+  -f chart/gitlab.yml \
   --set global.hosts.domain="$GITLAB_ADDR.nip.io" \
   --set global.hosts.externalIP="$GITLAB_ADDR" \
   --set global.edition=ce \
@@ -24,7 +24,7 @@ cd eassouli-iot
 git remote set-url origin http://gitlab.$GITLAB_ADDR.nip.io/root/wil-application.git
 git push --set-upstream origin main
 
-kubectl apply -n argocd -f ../confs/wil-application.yaml
+kubectl apply -n argocd -f confs/wil-application.yaml
 
 # Install kubectl, k3d, docker and helm automatic for 42
 # Change wil app to run on 80
