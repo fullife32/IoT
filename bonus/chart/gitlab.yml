@@ -21,9 +21,15 @@ global:
     # Configure the clone link in the UI to include the high-numbered NodePort
     # value from below (`gitlab.gitlab-shell.service.nodePort`)
     port: 32022
-  # minio:
-  #   enabled: false
+  minio:
+    enabled: false
   kas:
+    enabled: false
+  toolbox:
+    enabled: false
+  gitlab-exporter:
+    enabled: false
+  sidekiq:
     enabled: false
 # Don't use certmanager, we'll self-sign
 certmanager:
