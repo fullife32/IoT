@@ -1,4 +1,4 @@
-GITLAB_ADDR="192.168.56.1"
+GITLAB_ADDR="192.168.56.112"
 
 sudo helm repo add gitlab https://charts.gitlab.io/
 sudo helm repo update
