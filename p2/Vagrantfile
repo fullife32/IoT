@@ -5,9 +5,9 @@ Vagrant.configure("2") do |config|
 	config.vm.box = "debian/bookworm64"
 	config.vm.box_check_update = true
 
-	config.vm.define "eassouliS" do |control|
+	config.vm.define "bbellaviS" do |control|
 		control.vm.network "private_network", ip: "192.168.56.110"
-		control.vm.hostname = "eassouliS"
+		control.vm.hostname = "bbellaviS"
 		config.vm.provision "file", source: "./confs", destination: "$HOME/"
 		control.vm.provision "shell", inline: <<-SHELL
 			apt-get update
@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
 			sudo k3s kubectl apply -f confs/ingress/ingress.yaml
 		SHELL
 		control.vm.provider "virtualbox" do |vb|
-			vb.name = "eassouliS"
+			vb.name = "bbellaviS"
 			vb.memory = "1024"
 			vb.cpus = 1
 		end
