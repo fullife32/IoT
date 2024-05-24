@@ -7,7 +7,7 @@ sudo kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-
 
 sudo kubectl wait --for=condition=available deployments --all -n argocd --timeout 300s
 
-sudo kubectl apply -n argocd -f confs/wil-application.yaml
+sudo kubectl apply -n argocd -f ./confs/wil-application.yaml
 
 echo "\nargocd login: admin, password: "
 sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d

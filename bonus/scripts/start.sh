@@ -27,5 +27,6 @@ git clone https://github.com/fullife32/eassouli-iot.git
 cd eassouli-iot
 git remote set-url origin http://gitlab.$GITLAB_ADDR.nip.io/root/wil-app.git
 git push --set-upstream origin main
+cd ../
 
-sudo kubectl apply -n argocd -f confs/wil-application.yaml
+sudo kubectl apply -n argocd -f ./confs/wil-application.yaml
