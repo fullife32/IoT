@@ -13,18 +13,19 @@ sudo helm upgrade --install gitlab gitlab/gitlab -n gitlab --create-namespace \
 
 sudo kubectl wait --for=condition=available deployments --all -n gitlab --timeout 900s
 
-echo "gitlab URL: gitlab.$GITLAB_ADDR.nip.io"
-echo "login: root, password:"
+echo "\ngitlab URL: gitlab.$GITLAB_ADDR.nip.io"
+echo "login: root, password: "
 sudo kubectl -n gitlab get secret gitlab-gitlab-initial-root-password -o jsonpath="{.data.password}" | base64 -d
+
+echo "\n\nGo to gitlab.$GITLAB_ADDR.nip.io"
+echo "Create a public repository under the name wil-app"
+echo "Press Enter when done to continue"
 
 read touche
 
 git clone https://github.com/fullife32/eassouli-iot.git
 cd eassouli-iot
-git remote set-url origin http://gitlab.$GITLAB_ADDR.nip.io/root/wil-application.git
+git remote set-url origin http://gitlab.$GITLAB_ADDR.nip.io/root/wil-app.git
 git push --set-upstream origin main
 
 sudo kubectl apply -n argocd -f confs/wil-application.yaml
-
-# Install kubectl, k3d, docker and helm automatic for 42
-# Change wil app to run on 80
