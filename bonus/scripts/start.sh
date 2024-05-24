@@ -13,11 +13,10 @@ sudo helm upgrade --install gitlab gitlab/gitlab -n gitlab --create-namespace \
 
 sudo kubectl wait --for=condition=available deployments --all -n gitlab --timeout 900s
 
-echo "\ngitlab URL: gitlab.$GITLAB_ADDR.nip.io"
-echo "login: root, password: "
-sudo kubectl -n gitlab get secret gitlab-gitlab-initial-root-password -o jsonpath="{.data.password}" | base64 -d
-
 echo "\n\nGo to gitlab.$GITLAB_ADDR.nip.io"
+echo "Connect with user : root"
+echo "password : "
+sudo kubectl -n gitlab get secret gitlab-gitlab-initial-root-password -o jsonpath="{.data.password}" | base64 -d
 echo "Create a public repository under the name wil-app"
 echo "Press Enter when done to continue"
 
