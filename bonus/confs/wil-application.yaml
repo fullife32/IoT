@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'http://gitlab.192.168.43.48.nip.io/root/wil-application.git'
+    repoURL: 'http://gitlab.192.168.56.112.nip.io/root/wil-app.git'
     path: manifests
     targetRevision: HEAD
     directory:
