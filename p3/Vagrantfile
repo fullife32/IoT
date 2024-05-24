@@ -4,14 +4,17 @@
 Vagrant.configure("2") do |config|
 	config.vm.box = "debian/bookworm64"
 	config.vm.box_check_update = true
+	config.vm.network "forwarded_port", guest: 8888, host: 8888
+	config.vm.network "forwarded_port", guest: 4443, host: 4443
+	config.vm.network "forwarded_port", guest: 80, host: 8080
 
-	config.vm.define "eassouliS" do |control|
+	config.vm.define "mvo-van-S" do |control|
 		control.vm.network "private_network", ip: "192.168.56.112"
-		control.vm.hostname = "eassouliS"
-		config.vm.provision "file", source: ".", destination: "$HOME/"
+		control.vm.hostname = "mvo-van-S"
+		config.vm.provision "file", source: "../p3", destination: "$HOME/"
 		config.vm.provision "file", source: "../bonus", destination: "$HOME/"
 		control.vm.provider "virtualbox" do |vb|
-			vb.name = "eassouliS"
+			vb.name = "mvo-van-S"
 			vb.memory = "8196"
 			vb.cpus = 6
 		end
