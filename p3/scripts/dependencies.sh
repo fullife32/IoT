@@ -15,6 +15,8 @@ sudo chmod 700 get_helm.sh
 ./get_helm.sh
 
 # ???????????????
+# sudo passwd -d root
 # sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 # sudo sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/g' /etc/ssh/sshd_config
 # sudo systemctl restart sshd
+# sudo echo ssh >> /etc/securetty
